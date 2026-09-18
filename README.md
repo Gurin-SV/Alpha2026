@@ -1,7 +1,54 @@
-# Tauri + Angular
+# Alpha2026
 
-This template should help get you started developing with Tauri and Angular.
+Кроссплатформенный офлайн-словарь древнегреческого и латинского языков — замена старой Windows-программы [Alpha](https://gurin.tomsknet.ru/alpha.html).
 
-## Recommended IDE Setup
+## Словари
 
-[VS Code](https://code.visualstudio.com/) + [Tauri](https://marketplace.visualstudio.com/items?itemName=tauri-apps.tauri-vscode) + [rust-analyzer](https://marketplace.visualstudio.com/items?itemName=rust-lang.rust-analyzer) + [Angular Language Service](https://marketplace.visualstudio.com/items?itemName=Angular.ng-template).
+- **Древнегреческо-русский словарь И. Х. Дворецкого** (~70 000 статей)
+- **Древнегреческо-русский словарь А. Д. Вейсмана**
+- **Словарь флексийных форм греческих глаголов Нино Мариноне**
+- **Латинско-русский словарь И. Х. Дворецкого** (~50 000 статей)
+
+Все четыре словаря образуют единую базу: при поиске результаты выдаются сразу из всех словарей, в которых встречается слово.
+
+## Возможности
+
+- Инкрементный поиск по мере ввода
+- Точный и приближённый (по канонической форме) поиск
+- Полнотекстовый поиск (FTS5)
+- Виртуальная клавиатура с раскладками Gr / La / Ru
+- Панель диакритики для ввода букв с диакритическими знаками
+- Светлая и тёмная темы
+- Работа офлайн
+
+## Скачать
+
+Готовые сборки — на странице [Releases](../../releases/latest).
+
+**Windows:** `Alpha2026.msi`
+
+**Linux:**
+- `Alpha2026.AppImage` — портативная версия (рекомендуется)
+- `Alpha2026.deb` — для Ubuntu/Debian
+- `Alpha2026.rpm` — для Fedora/openSUSE
+
+## Сборка из исходников
+
+### Требования
+
+- [Node.js](https://nodejs.org/) 22+
+- [Rust](https://rustup.rs/) (stable)
+- [Tauri prerequisites](https://tauri.app/start/prerequisites/) для вашей ОС
+
+### База данных
+
+База `dictionary.db` (~228 МБ) **не входит в репозиторий**. Скачайте её из [Releases](../../releases/latest):
+
+1. Скачайте `dictionary.db.zip`
+2. Распакуйте и положите `dictionary.db` в папку `src-tauri/`
+
+### Сборка
+
+```bash
+npm install
+npm run tauri build
