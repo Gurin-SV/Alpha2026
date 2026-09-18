@@ -1,0 +1,7 @@
+<div class="pagination">
+    <a class="page-link" [class.disabled]="!canPrev" (click)="canPrev && first.emit()">В начало</a>
+    <a class="page-link" [class.disabled]="!canPrev" (click)="canPrev && prev.emit()">Предыдущие</a>
+    <span class="page-counter">Страница {{ currentPage + 1 }} из {{ totalPages }}</span>
+    <a class="page-link" [class.disabled]="!canNext" (click)="canNext && next.emit()">Следующие</a>
+    <a class="page-link" [class.disabled]="!canNext" (click)="canNext && last.emit()">В конец</a>
+</div>

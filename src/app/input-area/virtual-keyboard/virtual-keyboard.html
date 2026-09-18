@@ -1,0 +1,22 @@
+<div class="vk">
+    @for (row of getKeyRows(); track $index) {
+    <div class="vk-row">
+        @for (k of row; track k.code) {
+        <div class="vk-key" (mousedown)="$event.preventDefault()" (click)="onKeyClick(k)">
+            <span class="vk-en">{{ k.en }}</span>
+            <span class="vk-ch">{{ k.ch }}</span>
+        </div>
+        }
+    </div>
+    }
+
+    <div class="vk-row vk-row-actions">
+        <div class="vk-key vk-key-wide" (mousedown)="$event.preventDefault()" (click)="onBackspace()">
+            <span class="material-icons">backspace</span>
+        </div>
+        <div class="vk-key vk-key-space" (mousedown)="$event.preventDefault()" (click)="onSpace()"></div>
+        <div class="vk-key vk-key-wide" (mousedown)="$event.preventDefault()" (click)="onEnter()">
+            <span class="material-icons">keyboard_return</span>
+        </div>
+    </div>
+</div>

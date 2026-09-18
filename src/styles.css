@@ -1,0 +1,336 @@
+/* ===== Переменные темы (светлая по умолчанию) ===== */
+@import 'material-icons/iconfont/material-icons.css';
+
+:root,
+.theme-light {
+    --bg: #ffffff;
+    --text-color: #000000;
+    --border-color: #c0c0c0;
+    --toolbar-bg: #f0f0f0;
+    --input-area-bg: #e3dede;
+    --input-bg: #ffffff;
+    --diacritics-bg: #eaf3fb;
+    --content-bg: #ffffff;
+    --hover-bg: #e0e0e0;
+    --link-color: #0040a0;
+
+    --author-color: #0040a0;
+    --mark-color: #006000;
+    --editor-color: #808080;
+    --tilde-color: #047807;
+
+    --caption-text: #003366;
+    --caption-bg-1: #d0e8ff;
+    --caption-bg-2: #a8d0f0;
+    --caption-border: #80b0d0;
+
+    --mark-bg-1: #d0e8ff;
+    --mark-bg-2: #a8d0f0;
+
+    --active-btn-bg-1: #d0e8ff;
+    --active-btn-bg-2: #a8d0f0;
+    --active-btn-border: #80b0d0;
+    --active-btn-text: #003366;
+
+    --toolbar-bg-1: #eaf3fb;
+    --toolbar-bg-2: #b8cfe4;
+    
+    --help-bg: #f4eff7;
+    --help-link-color: #0040a0;
+    --help-text-color: #594040;
+}
+
+.theme-dark {
+    --bg: #1e1e1e;
+    --text-color: #e0e0e0;
+    --border-color: #444444;
+    --toolbar-bg: #2a2a2a;
+    --input-area-bg: #3b3a3a;
+    --input-bg: #1a1a1a;
+    --diacritics-bg: #1a2a3a;
+    --content-bg: #1e1e1e;
+    --hover-bg: #3a3a3a;
+    --link-color: #6ea8ff;
+
+    --author-color: #6ea8ff;
+    --mark-color: #6ec06e;
+    --editor-color: #a0a0a0;
+    --tilde-color: #09a41d;
+
+    --caption-text: #cfe4ff;
+    --caption-bg-1: #2a4a6a;
+    --caption-bg-2: #1e3a5a;
+    --caption-border: #4a7aaa;
+
+    --mark-bg-1: #2a4a6a;
+    --mark-bg-2: #1e3a5a;
+
+    --active-btn-bg-1: #2a4a6a;
+    --active-btn-bg-2: #1e3a5a;
+    --active-btn-border: #4a7aaa;
+    --active-btn-text: #cfe4ff;
+
+    --toolbar-bg-1: #3a5a7a;
+    --toolbar-bg-2: #1a2a3a;
+
+    --help-bg: var(--content-bg);
+    --help-link-color: #a8c8f0;
+    --help-text-color: #fce2ca;
+}
+
+/* ===== Базовые ===== */
+
+html {
+    font-size: 16px;
+}
+
+body {
+    font-family: "Times New Roman", serif;
+    font-size: 1rem;
+    line-height: 1.4;
+    margin: 0;
+    padding: 0;
+    color: var(--text-color);
+    background: var(--bg);
+}
+
+.app {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    overflow: hidden;
+}
+
+app-root {
+    display: block;
+    height: 100vh;
+}
+
+/* ===== Секции статьи ===== */
+
+.entry {
+    margin-bottom: 1em;
+}
+
+.body {
+    margin-bottom: 0;
+}
+
+br {
+    display: none;
+}
+
+br+.body {
+    margin-top: 0.5em;
+}
+
+.text {
+    margin: 0;
+}
+
+/* ===== Инлайн-стили ===== */
+
+b,
+.bold {
+    font-weight: bold;
+}
+
+i,
+.italic {
+    font-style: italic;
+}
+
+.editor {
+    font-style: italic;
+    color: var(--editor-color);
+}
+
+.author {
+    font-size: 80%;
+    color: var(--author-color);
+    font-style: normal;
+}
+
+.mark {
+    font-style: italic;
+    color: var(--mark-color);
+}
+
+.glyph {
+    font-family: "AlphaSp", "Times New Roman", serif;
+    font-style: normal;
+}
+
+.tilde {
+    color: var(--tilde-color);
+    font-size: 80%;
+}
+
+/* ===== Списки ===== */
+
+.list {
+    margin: 0;
+}
+
+.item {
+    display: grid;
+    grid-template-columns: 2rem 1fr;
+    column-gap: 0.3rem;
+    margin-bottom: 2px;
+    align-items: baseline;
+}
+
+.item.level-1 {
+    margin-left: 0;
+    grid-template-columns: 2rem 1fr;
+}
+
+.item.level-2 {
+    margin-left: 1rem;
+    grid-template-columns: 2.5rem 1fr;
+}
+
+.item.level-3 {
+    margin-left: 2rem;
+    grid-template-columns: 3.5rem 1fr;
+}
+
+.num {
+    text-align: right;
+    white-space: nowrap;
+}
+
+/* ===== Заголовок словаря / раздела ===== */
+
+h2.dict-caption {
+    font-family: Arial, sans-serif;
+    font-size: 0.8rem;
+    font-weight: bold;
+    color: var(--caption-text);
+    background: linear-gradient(to bottom, var(--caption-bg-1), var(--caption-bg-2));
+    border: 1px solid var(--caption-border);
+    border-radius: 2px;
+    padding: 2px 6px;
+    margin: 0.3rem 0 0.15em 0;
+}
+
+/* ===== Результаты поиска (FTS) ===== */
+
+.fts-results {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 0.5rem;
+}
+
+.fts-results th,
+.fts-results td {
+    border: 1px solid var(--border-color);
+    padding: 4px 8px;
+    text-align: left;
+    vertical-align: top;
+}
+
+.fts-results th {
+    background: var(--toolbar-bg);
+    font-weight: bold;
+}
+
+.fts-results mark {
+    background: linear-gradient(to bottom, var(--mark-bg-1), var(--mark-bg-2));
+    border: 1px solid var(--caption-border);
+    border-radius: 2px;
+    color: inherit;
+}
+
+/* ===== Подсветка в статьях ===== */
+
+.entry mark {
+    background: linear-gradient(to bottom, var(--mark-bg-1), var(--mark-bg-2));
+    color: inherit;
+}
+
+/* ===== Список ключей ===== */
+
+.key-list {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 0.5rem;
+}
+
+.key-list td {
+    padding: 2px 6px;
+    vertical-align: top;
+}
+
+.key-list .key {
+    cursor: pointer;
+    font-weight: bold;
+    user-select: text;
+}
+
+.key-list .key:hover {
+    text-decoration: underline;
+}
+
+.key-list .dicts {
+    font-style: italic;
+    color: var(--editor-color);
+}
+
+.material-icons {
+    font-family: 'Material Icons';
+    font-weight: normal;
+    font-style: normal;
+    font-size: 1.1rem;
+    line-height: 1;
+    letter-spacing: normal;
+    text-transform: none;
+    display: inline-block;
+    white-space: nowrap;
+    word-wrap: normal;
+    direction: ltr;
+    -webkit-font-smoothing: antialiased;
+}
+
+app-toolbar,
+app-input-area,
+app-content-area {
+    display: flex;
+    flex-direction: column;
+}
+
+app-content-area {
+    flex: 1;
+    min-height: 0;
+}
+
+.content-area.help-mode {
+    background: var(--help-bg);
+    color: var(--help-text-color);
+}
+
+.content-area.help-mode a,
+.content-area.help-mode a:link,
+.content-area.help-mode a:visited,
+.content-area.help-mode a:active {
+    color: var(--help-link-color);
+}
+
+.content-area.help-mode table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 0.5rem 0;
+}
+
+.content-area.help-mode th,
+.content-area.help-mode td {
+    border: 1px solid var(--border-color);
+    padding: 4px 8px;
+    text-align: left;
+    vertical-align: top;
+}
+
+.content-area.help-mode th {
+    background: var(--toolbar-bg);
+    font-weight: bold;
+}

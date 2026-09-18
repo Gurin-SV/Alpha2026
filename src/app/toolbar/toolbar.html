@@ -1,0 +1,31 @@
+<div class="toolbar">
+    <button class="icon-btn" [disabled]="!state.canGoBack()" (click)="goBack()" title="Назад">
+        <span class="material-icons">arrow_back</span>
+    </button>
+
+    <button class="icon-btn" [disabled]="!state.canGoForward()" (click)="goForward()" title="Вперёд">
+        <span class="material-icons">arrow_forward</span>
+    </button>
+
+    <button class="icon-btn" title="Очистить поле ввода" (click)="clearInput()">
+        <span class="material-icons">clear</span>
+    </button>
+
+    <button class="icon-btn" (click)="openHelp()" title="Справка">
+        <span class="material-icons">help</span>
+    </button>
+
+    <span class="separator"></span>
+
+    <select [value]="state.theme()" (change)="setTheme($any($event.target).value)">
+        @for (t of themes; track t.value) {
+        <option [value]="t.value">{{ t.label }}</option>
+        }
+    </select>
+
+    <select [value]="state.scale()" (change)="setScale($any($event.target).value)">
+        @for (s of scales; track s) {
+        <option [value]="s">{{ s }}%</option>
+        }
+    </select>
+</div>

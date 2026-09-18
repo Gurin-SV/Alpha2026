@@ -1,0 +1,32 @@
+<div class="input-area">
+    <div class="languages">
+        @for (lang of languages; track lang.value) {
+        <button type="button" class="lang-btn" [class.active]="state.inputLanguage() === lang.value"
+            [title]="lang.title" (click)="setLanguage(lang.value)">
+            {{ lang.label }}
+        </button>
+        }
+        <button type="button" class="lang-btn keyboard-btn" title="Виртуальная клавиатура" (click)="toggleKeyboard()">
+            <span class="material-icons">keyboard</span>
+        </button>
+    </div>
+
+    <div class="input-stack">
+        <textarea #textarea class="input-text" (keydown)="onKeyDown($event)" (input)="onInput()"
+            (dblclick)="onDoubleClick($event)" (click)="updateDiacritics()" (keyup)="updateDiacritics()"></textarea>
+
+        <div class="diacritics-panel" [class.empty]="diacriticVariants().length === 0"
+            (mousedown)="$event.preventDefault()">
+            @for (v of diacriticVariants(); track v) {
+            <button type="button" class="diacritic-btn" (click)="applyDiacritic(v)">{{ v }}</button>
+            }
+        </div>
+    </div>
+
+    @if (showKeyboard()) {
+    <div class="keyboard-popup" (mousedown)="$event.stopPropagation()">
+        <app-virtual-keyboard (key)="onVirtualKey($event)" (backspace)="onVirtualBackspace()" (space)="onVirtualSpace()"
+            (enter)="onVirtualEnter()" />
+    </div>
+    }
+</div>

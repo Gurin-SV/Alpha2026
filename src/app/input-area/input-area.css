@@ -1,0 +1,116 @@
+.input-area {
+    position: relative;
+    display: flex;
+    align-items: stretch;
+    gap: 0.2rem;
+    padding: 0.3rem;
+    background: var(--input-area-bg);
+    border-bottom: 1px solid var(--border-color);
+    flex-shrink: 0;
+}
+
+.languages {
+    display: flex;
+    flex-direction: row;
+    gap: 0.2rem;
+    align-items: center;
+    align-self: flex-start;
+    height: calc(1.5rem + 2px);
+    /* высота одной строки textarea + border */
+}
+
+.lang-radio {
+    display: flex;
+    align-items: center;
+    gap: 0.2rem;
+    cursor: pointer;
+    user-select: none;
+    font-size: 1.5rem;
+}
+
+.lang-radio input {
+    cursor: pointer;
+}
+
+.input-stack {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+
+.input-text {
+    width: 100%;
+    font-family: "Times New Roman", serif;
+    font-size: 1rem;
+    line-height: 1.5;
+    resize: vertical;
+    height: 1.5rem;
+    min-height: 1.5rem;
+    max-height: 50vh;
+    overflow-y: hidden;
+    padding: 0rem 1rem 0rem 0.3rem;
+    border: 1px solid var(--border-color);
+    background: var(--input-bg);
+    color: var(--text-color);
+    box-sizing: border-box;
+}
+
+.lang-btn.active {
+    background: linear-gradient(to bottom, var(--active-btn-bg-1), var(--active-btn-bg-2));
+    color: var(--active-btn-text);
+    border-color: var(--active-btn-border);
+    font-weight: bold;
+}
+
+.keyboard-popup {
+    position: absolute;
+    top: 100%;
+    left: 0.5rem;
+    z-index: 100;
+    margin-top: 0.1rem;
+}
+
+.keyboard-btn {
+    border: none;
+    background: transparent;
+    padding: 0.1rem 0 0 0;
+}
+
+.keyboard-btn:hover {
+    background: var(--hover-bg);
+    border-radius: 3px;
+}
+
+.diacritics-panel {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 2px;
+    padding: 2px 4px;
+    height: 1.4rem;
+    margin: 2px 0 0 0;
+    border: 1px solid var(--border-color);
+    box-sizing: border-box;
+    background: var(--diacritics-bg);
+    overflow: hidden;
+    user-select: none;
+}
+
+.diacritic-btn {
+    border: none;
+    background: transparent;
+    font: inherit;
+    color: var(--text-color);
+    cursor: pointer;
+    padding: 0 4px;
+    border-radius: 2px;
+    line-height: 1.2;
+}
+
+.diacritic-btn:hover {
+    background: var(--hover-bg);
+}
+
+.diacritic-btn:active {
+    background: var(--active-btn-bg-1);
+}

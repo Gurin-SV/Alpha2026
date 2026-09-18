@@ -1,0 +1,57 @@
+<div class="content-area" [class.help-mode]="state.contentType() === 'help'">
+    @switch (state.contentType()) {
+    @case ("article") {
+        @for (a of state.articles(); track $index) {
+        <h2 class="dict-caption">{{ a.caption }}</h2>
+        <div [innerHTML]="trustHtml(a.html)" (dblclick)="onArticleDoubleClick($event)"></div>
+        }
+    }
+    @case ("help") {
+    <div [innerHTML]="state.helpHtml()" (click)="onHelpClick($event)"></div>
+    }
+    @case ("error") {
+    <h2 class="dict-caption">Ошибка</h2>
+    <p>{{ state.errorMessage() }}</p>
+    }
+    @case ("list") {
+    <h2 class="dict-caption">{{ state.currentPrefix() }}</h2>
+    <app-pagination [currentPage]="state.currentPrefixPage()" [totalPages]="totalPrefixPages" (first)="goFirst()"
+        (prev)="goPrev()" (next)="goNext()" (last)="goLast()" />
+    <table class="key-list">
+        <tbody>
+            @for (k of state.keys(); track k.key) {
+            <tr>
+                <td class="key" (dblclick)="openKey(k.key)">{{ k.key }}</td>
+                <td class="dicts">{{ k.captions.join(", ") }}</td>
+            </tr>
+            }
+        </tbody>
+    </table>
+    }
+    @case ("fts") {
+    <h2 class="dict-caption">Полнотекстовый поиск: {{ state.currentFtsQuery() }}</h2>
+    @if (state.ftsRows().length === 0) {
+    <p><i>Не найдено.</i></p>
+    } @else {
+    <app-pagination [currentPage]="state.ftsPage()" [totalPages]="state.ftsTotalPages()" (first)="state.goFtsFirst()"
+        (prev)="state.goFtsPrev()" (next)="state.goFtsNext()" (last)="state.goFtsLast()" />
+    <table class="fts-results">
+        <thead>
+            <tr>
+                <th>Ключ</th>
+                <th>Контекст</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (row of state.ftsPageRows(); track $index) {
+            <tr>
+                <td class="key" (dblclick)="openKey(row.key)">{{ row.key }}</td>
+                <td [innerHTML]="trustHtml(highlight(row.snippet))"></td>
+            </tr>
+            }
+        </tbody>
+    </table>
+    }
+    }
+    }
+</div>
