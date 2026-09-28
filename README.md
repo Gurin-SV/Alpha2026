@@ -25,7 +25,7 @@
 
 Готовые сборки — на странице [Releases](../../releases/latest).
 
-**Windows:** `Alpha2026.msi`
+**Windows:** `Alpha2026_0.1.0_x64-setup.exe`
 
 **Linux:**
 - `Alpha2026.AppImage` — портативная версия (рекомендуется)
